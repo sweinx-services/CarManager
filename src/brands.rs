@@ -17,5 +17,9 @@ pub fn brands() -> io::Result<(String, String, String)> {
     stdout().flush()?;
     stdin().read_line(&mut toyotastr)?;
 
+    let bmwstr = bmwstr.trim().to_string();
+    let mercedesstr = mercedesstr.trim().to_string();
+    let toyotastr = toyotastr.trim().to_string();
+
     Ok((bmwstr, mercedesstr, toyotastr))
 }   

@@ -1,3 +1,4 @@
+mod test;
 mod brands;
 mod prices;
 use std::io;
