@@ -1,38 +1,67 @@
-mod test;
+
 mod brands;
-mod prices;
-use std::io;
-use crate::{brands::brands, prices::prices};
 
-struct Brands {
-    bmw_brand: String,
-    mercedes_brand: String,
-    toyota_brand: String,
-}
-
-struct Prices {
-    bmw_price: i32,
-    mercedes_price: i32,
-    toyota_price: i32,
-}
+use std::io::{self, Write, stdin, stdout};
+use std::num::ParseIntError;
 
 fn main() -> io::Result<()> {
-    let (bmwstr, mercedesstr, toyotastr) = brands()?;
-    let car_brands = Brands {
-        bmw_brand: bmwstr,
-        mercedes_brand: mercedesstr,
-        toyota_brand: toyotastr,
-    };
+    let mut brands: Vec<String> = Vec::new();
 
-    let (bmw, mercedes, toyota) = prices()?;
-    let car_prices = Prices {
-        bmw_price: bmw,
-        mercedes_price: mercedes,
-        toyota_price: toyota,
-    };
+    loop {
+        let _ = clearscreen::clear();
 
-    println!("Car Brands: {}, {}, {}", car_brands.bmw_brand, car_brands.mercedes_brand, car_brands.toyota_brand);
-    println!("Car Prices: {}, {}, {}", car_prices.bmw_price, car_prices.mercedes_price, car_prices.toyota_price);
+        println!("--- Car Manager ---\n");
+        println!("1. Add Car Brand and Model");
+        println!("2. List All Cars");
+        println!("3. Exit\n");
+
+        print!(">> Please enter choice: ");
+        stdout().flush()?;
+
+        let mut choicestr = String::new();
+        stdin().read_line(&mut choicestr)?;
+
+        let choice: Result<u8, ParseIntError> = choicestr.trim().parse();
+
+        match choice {
+            Ok(1) => {
+                let _ = clearscreen::clear();
+
+                println!("--- Car Brand Entry Menu ---\n");
+
+                let new_brand = brands::get_brand()?;
+                brands.extend(new_brand);
+            }
+
+            Ok(2) => {
+                let _ = clearscreen::clear();
+
+                println!("--- Brand Listing Menu ---\n");
+
+                brands::list_brands(&brands)?;
+                
+                println!("\nPress Enter to continue...");
+                let mut input = String::new();
+                stdin().read_line(&mut input)?;
+            }
+
+            Ok(3) => {
+                println!(">> Programdan çıkılıyor. Hoşça kalın!");
+                break;
+            }
+
+            Ok(invalid) => {
+                println!(
+                    ">> Hata: {} geçerli bir menü seçeneği değil!",
+                    invalid
+                );
+            }
+
+            Err(_) => {
+                println!(">> Hata: Lütfen sadece bir sayı giriniz!");
+            }
+        }
+    }
 
     Ok(())
 }

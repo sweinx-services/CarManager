@@ -1,25 +1,23 @@
-use std::io::{self, Write, stdin, stdout};
+use std::{io::{self, Write, stdin, stdout} };
 
-pub fn brands() -> io::Result<(String, String, String)> {
-    let mut bmwstr = String::new();
-    let mut mercedesstr = String::new();
-    let mut toyotastr = String::new();
+pub fn get_brand() -> io::Result<Vec<String>> {
+    let mut brand: Vec<String> = Vec::new();
 
-    print!("Please Input BMW Brand: ");
-    stdout().flush()?;
-    stdin().read_line(&mut bmwstr)?;
+    print!("Please enter car brand: "); stdout().flush()?;
 
-    print!("Please Input Mercedes Brand: ");
-    stdout().flush()?;
-    stdin().read_line(&mut mercedesstr)?;
+    let mut brandstr = String::new();
+    stdin().read_line(&mut brandstr)?;
 
-    print!("Please Input Toyota Brand: ");
-    stdout().flush()?;
-    stdin().read_line(&mut toyotastr)?;
+    let brandstr = brandstr.trim().to_string();
+    brand.push(brandstr);
 
-    let bmwstr = bmwstr.trim().to_string();
-    let mercedesstr = mercedesstr.trim().to_string();
-    let toyotastr = toyotastr.trim().to_string();
+    Ok(brand)
+}
 
-    Ok((bmwstr, mercedesstr, toyotastr))
-}   
+pub fn list_brands(brand: &Vec<String>) -> io::Result<()> {
+    for i in brand {
+        println!("- {}", i);
+    }
+
+    Ok(())
+}
