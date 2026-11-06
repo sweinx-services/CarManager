@@ -16,7 +16,7 @@ pub fn get_brand() -> io::Result<Vec<String>> {
 
 pub fn list_brands(brand: &Vec<String>) -> io::Result<()> {
     for i in brand {
-        println!("- {}", i);
+        println!("- {}", i); 
     }
 
     Ok(())
