@@ -2,27 +2,30 @@
 
 CarManager is a simple command-line application written in **Rust** for managing car brands and models.
 
-This project is being developed as part of my journey to learn Rust and improve my programming skills.
+This project is part of my Rust learning journey. I'm building it step by step to improve my understanding of Rust fundamentals and programming concepts.
 
 ## Features
 
-- Add car brands and models.
-- List stored car brands.
+- Add car brands.
+- Add car models.
+- List all car brands.
+- List all car models.
 - Interactive command-line menu.
 - Store data using Rust vectors (`Vec`).
 - Basic input validation.
 
 ## Technologies
 
-- **Rust** – Main programming language
+- **Rust** – Programming language
 - **Cargo** – Project and dependency management
+- **clearscreen** – Terminal screen management
 
 ## Installation & Usage
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/sweinx-services/CarManager.git
+git clone https://github.com/YOUR_USERNAME/CarManager.git
 ```
 
 Navigate to the project directory:
@@ -43,7 +46,8 @@ cargo run
 CarManager/
 ├── src/
 │   ├── main.rs
-│   └── brands.rs
+│   ├── brands.rs
+│   └── models.rs
 ├── Cargo.toml
 ├── Cargo.lock
 └── README.md
@@ -51,7 +55,7 @@ CarManager/
 
 ## Learning Goals
 
-While working on this project, I'm practicing:
+Through this project, I'm practicing:
 
 - Rust ownership and borrowing
 - Vectors and collections
@@ -62,11 +66,12 @@ While working on this project, I'm practicing:
 
 ## Future Improvements
 
-- [ ] Add car models and prices.
+- [ ] Connect car brands with their models.
+- [ ] Implement a `Car` struct.
+- [ ] Add car prices.
 - [ ] Implement car deletion and updating.
 - [ ] Add price comparison and sorting.
 - [ ] Save data to a file.
-- [ ] Improve input validation.
 
 ---
 
