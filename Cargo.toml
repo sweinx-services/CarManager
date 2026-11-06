@@ -1,9 +1,5 @@
 [package]
-<<<<<<< HEAD
-name = "CarManager"
-=======
 name = "car-manager"
->>>>>>> ff768b8f5f7a8166a4f4111ff7c86ae10cdf2584
 version = "0.1.0"
 edition = "2024"
 
